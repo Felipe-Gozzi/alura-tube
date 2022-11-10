@@ -8,14 +8,16 @@ function HomePage() {
     return (
         <>
             <CSSReset />
-            <div style={{}} >
+            <div style={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+            }}>
                 <Menu />
-                <Header></Header>
+                <Header />
                 <Timeline playlists={config.playlists}></Timeline>
             </div>
         </>
-
-
     )
 }
 
@@ -48,22 +50,19 @@ function Header() {
                     <p>{config.job}</p>
                 </div>
             </section>
-
         </StyledHeader>
     )
 }
 
 function Timeline(props) {
-
-    const playlistsNames = Object.keys(props.playlists)
-
+    const playlistsNames = Object.keys(props.playlists);
     return (
         <StyledTimeline>
-            {playlistsNames.map(function (playlistsName) {
-                const videos = props.playlists[playlistsName];
+            {playlistsNames.map((playlistName) => {
+                const videos = props.playlists[playlistName];
                 return (
                     <section>
-                        <h2>{playlistsName}</h2>
+                        <h2>{playlistName}</h2>
                         <div>
                             {videos.map((video) => {
                                 return (
